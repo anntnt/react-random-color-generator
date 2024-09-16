@@ -6,7 +6,7 @@ import { useState } from 'react';
 export default function App() {
   const rColor = randomColor();
   const [color, setColor] = useState(rColor);
-  // const [colorInput, setColorInput] = useState();
+  const [colorInput, setColorInput] = useState();
 
   return (
     <>
@@ -17,7 +17,8 @@ export default function App() {
       </div>
       <button
         value={colorInput}
-        onClick={() => {
+        onClick={(event) => {
+          setColorInput(event.currentTarget.value);
           const newColor = randomColor();
           setColor(newColor);
         }}
