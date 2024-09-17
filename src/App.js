@@ -1,30 +1,36 @@
-// import { argv, exit } from 'node:process';
-// import { hex } from 'ansis';
 import randomColor from 'randomcolor';
 import { useState } from 'react';
 
 export default function App() {
-  const rColor = randomColor();
-  const [color, setColor] = useState(rColor);
-  const [colorInput, setColorInput] = useState();
+  const [color, setColor] = useState('hex code');
 
   return (
-    <>
-      <h1>Random Color</h1>
-
-      <div style={{ backgroundColor: color, padding: '50px' }}>
-        Generated Color: &lt;background color {color}&gt;
-      </div>
+    <div style={{ textAlign: 'center' }}>
+      <h1>Random Color Generator</h1>
       <button
-        value={colorInput}
-        onClick={(event) => {
-          setColorInput(event.currentTarget.value);
-          const newColor = randomColor();
-          setColor(newColor);
+        onClick={() => {
+          setColor(randomColor());
+        }}
+        style={{
+          fontSize: '20px',
+          padding: '10px',
+          margin: '40px',
         }}
       >
         Generate
       </button>
-    </>
+      <div
+        style={{
+          boxSizing: 'border-box',
+          backgroundColor: color,
+          padding: '40px 0',
+          margin: 'auto',
+          width: '400px',
+          border: '5px dotted #666666',
+        }}
+      >
+        Generated Color: &lt;background color {color}&gt;
+      </div>
+    </div>
   );
 }
