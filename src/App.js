@@ -29,7 +29,7 @@ export default function App() {
           border: '5px dotted #666666',
         }}
       >
-        Generated Color: &lt;background color {color}&gt;
+        Generated Color: {color}
       </div>
     </div>
   );
