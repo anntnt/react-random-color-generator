@@ -2,7 +2,7 @@ import randomColor from 'randomcolor';
 import { useState } from 'react';
 
 export default function App() {
-  const [color, setColor] = useState('hex code');
+  const [color, setColor] = useState('#ffffff');
 
   return (
     <div style={{ textAlign: 'center' }}>
