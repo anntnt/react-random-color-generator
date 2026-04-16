@@ -1,5 +1,7 @@
 import randomColor from 'randomcolor';
 import { useState } from 'react';
+import './components/ColorDisplay';
+import { ColorDisplay } from './components/ColorDisplay';
 
 export default function App() {
   const hueOptions = [
@@ -27,17 +29,7 @@ export default function App() {
       >
         Generate
       </button>
-      <div
-        className="box-border flex flex-col items-center justify-center border-[5px] border-dotted border-[#666666] text-center"
-        style={{
-          backgroundColor: color,
-          width: `${size}px`,
-          height: `${size}px`,
-        }}
-      >
-        <div>Generated Color:</div> 
-        <div>{color}</div>
-      </div>
+      <ColorDisplay color={color} size={size} mode={mode} />
     </div>
   );
 }
