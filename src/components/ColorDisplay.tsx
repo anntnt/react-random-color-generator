@@ -1,7 +1,9 @@
+import type { Mode } from '../lib/types';
+
 type ColorDisplayProps = {
   color: string;
   size: number;
-  mode?: 'manual' | 'screensaver';
+  mode: Mode;
 };
 
 export function ColorDisplay({ color, size, mode }: ColorDisplayProps) {
@@ -17,7 +19,7 @@ export function ColorDisplay({ color, size, mode }: ColorDisplayProps) {
       <div className="font-bold">Generated Color:</div>
       <div>{color}</div>
       <div className="mt-4 font-bold">Mode:</div>
-      <div>{mode || 'manual'}</div>
+      <div>{mode}</div>
     </div>
   );
 }

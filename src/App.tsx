@@ -2,6 +2,8 @@ import randomColor from 'randomcolor';
 import { useState } from 'react';
 import './components/ColorDisplay';
 import { ColorDisplay } from './components/ColorDisplay';
+import ModeSwitch from './components/ModeSwitch';
+import type { Mode } from './lib/types';
 
 export default function App() {
   const hueOptions = [
@@ -9,7 +11,7 @@ export default function App() {
     { label: 'Green', value: 'green' },
     { label: 'Blue', value: 'blue' },
   ];
-  const [mode, setMode] = useState<'manual' | 'screensaver'>('manual');
+  const [mode, setMode] = useState<Mode>('manual');
   const [hue, setHue] = useState(hueOptions[0]);
   const [luminosity, setLuminosity] = useState('light');
   const [size, setSize] = useState(200);
@@ -21,6 +23,7 @@ export default function App() {
         Random Color Generator
       </h1>
       <p className='mt-4'>Pick a color manually or let the screensaver run</p>
+      <ModeSwitch mode={mode} setMode={setMode} />
       <button
         onClick={() => {
           setColor(randomColor());
