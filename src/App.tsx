@@ -2,34 +2,41 @@ import randomColor from 'randomcolor';
 import { useState } from 'react';
 
 export default function App() {
+  const hueOptions = [
+    { label: 'Red', value: 'red' },
+    { label: 'Green', value: 'green' },
+    { label: 'Blue', value: 'blue' },
+  ];
+  const [mode, setMode] = useState<'manual' | 'screensaver'>('manual');
+  const [hue, setHue] = useState(hueOptions[0]);
+  const [luminosity, setLuminosity] = useState('light');
+  const [size, setSize] = useState(200);
   const [color, setColor] = useState('#ffffff');
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Random Color Generator</h1>
+    <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-6 text-center ">
+      <h1 className="m-0 text-[30px] font-semibold">
+        Random Color Generator
+      </h1>
+      <p className='mt-4'>Pick a color manually or let the screensaver run</p>
       <button
         onClick={() => {
           setColor(randomColor());
         }}
-        style={{
-          fontSize: '20px',
-          padding: '10px',
-          margin: '40px',
-        }}
+        className="my-10 cursor-pointer rounded-2xl border border-slate-600 bg-sky-600 hover:bg-sky-700 px-4 py-2.5 text-[20px] text-white"
       >
         Generate
       </button>
       <div
+        className="box-border flex flex-col items-center justify-center border-[5px] border-dotted border-[#666666] text-center"
         style={{
-          boxSizing: 'border-box',
           backgroundColor: color,
-          padding: '40px 0',
-          margin: 'auto',
-          width: '400px',
-          border: '5px dotted #666666',
+          width: `${size}px`,
+          height: `${size}px`,
         }}
       >
-        Generated Color: {color}
+        <div>Generated Color:</div> 
+        <div>{color}</div>
       </div>
     </div>
   );
