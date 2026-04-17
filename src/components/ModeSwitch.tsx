@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
+import { Switch } from '@headlessui/react';
 import type { Mode } from '../lib/types';
 
 type ModeSwitchProps = {
@@ -6,63 +7,75 @@ type ModeSwitchProps = {
   setMode: Dispatch<SetStateAction<Mode>>;
 };
 
-const modeOptions: { label: string; value: Mode }[] = [
-  { label: 'Manual', value: 'manual' },
-  { label: 'Screensaver', value: 'screensaver' },
-];
-
 export default function ModeSwitch({ mode, setMode }: ModeSwitchProps) {
+  const isScreensaver = mode === 'screensaver';
+  const description = isScreensaver
+    ? 'Colors rotate automatically'
+    : 'Generate colors on demand';
+
   return (
-    <fieldset className="mt-6">
-      <legend className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-        Mode
-      </legend>
+    <div className="mt-6 w-full max-w-xl rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-left">
+          <p className="text-lg font-semibold uppercase tracking-[0.05em] text-slate-500">
+            Mode
+          </p>
+          <p className="text-sm text-slate-600">{description}</p>
+        </div>
 
-      <div className="inline-flex p-1.5 ">
-        {modeOptions.map((option) => {
-          const isSelected = mode === option.value;
-          const inputId = `mode-${option.value}`;
+        <div className="flex items-center gap-3 self-start sm:self-center">
+          <span
+            className={`text-lg font-semibold transition-colors ${
+              isScreensaver ? 'text-slate-400' : 'text-slate-900'
+            }`}
+          >
+            Manual
+          </span>
 
-          return (
-            <div key={option.value} className='px-4'>
-              <input
-                id={inputId}
-                type="radio"
-                name="mode"
-                value={option.value}
-                checked={isSelected}
-                onChange={() => setMode(option.value)}
-                className="sr-only"
-                aria-label={option.label}
-              />
-              <label
-                htmlFor={inputId}
-                aria-label={option.label}
-                className={`cursor-pointer rounded-lg px-4 py-2 text-base transition ${
-                  isSelected
-                    ? 'bg-white text-slate-950 ring-1 ring-slate-200'
-                    : 'text-slate-500 hover:bg-emerald-50 hover:text-emerald-700 hover:ring-1 hover:ring-emerald-200'
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <span
-                    className={`h-2.5 w-2.5 rounded-full ${
-                      isSelected ? 'bg-emerald-500' : 'bg-slate-300'
-                    }`}
-                    aria-hidden="true"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="transition-colors"
-                  >
-                    {option.label}
-                  </span>
-                </span>
-              </label>
-            </div>
-          );
-        })}
+          <Switch
+            checked={isScreensaver}
+            onChange={(checked) =>
+              setMode(checked ? 'screensaver' : 'manual')
+            }
+            className={`relative inline-flex h-10 w-16 cursor-pointer rounded-full border border-transparent 
+              transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 
+              ${isScreensaver ? 'bg-emerald-500' : 'bg-slate-300'
+            }`}
+          >
+            <span className="sr-only">
+              Toggle between manual and screensaver mode
+            </span>
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute left-1 top-1 h-7 w-7 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                isScreensaver ? 'translate-x-7' : 'translate-x-0'
+              }`}
+            />
+          </Switch>
+
+          <span
+            className={`text-lg font-semibold transition-colors ${
+              isScreensaver ? 'text-slate-900' : 'text-slate-400'
+            }`}
+          >
+            Screensaver
+          </span>
+        </div>
       </div>
-    </fieldset>
+
+      <div className="mt-4 flex items-center gap-2 rounded-2xl bg-slate-50 px-3 py-2 text-sm text-slate-600">
+        <span
+          aria-hidden="true"
+          className={`h-2.5 w-2.5 rounded-full ${
+            isScreensaver ? 'bg-emerald-500' : 'bg-sky-500'
+          }`}
+        />
+        <span>
+          {isScreensaver
+            ? 'Switch off to return to manual generation.'
+            : 'Switch on to start the screensaver mode.'}
+        </span>
+      </div>
+    </div>
   );
 }
