@@ -12,5 +12,4 @@
     { label: 'Light', value: 'light' },
     { label: 'Dark', value: 'dark' },
     { label: 'Bright', value: 'bright' },
-
   ];

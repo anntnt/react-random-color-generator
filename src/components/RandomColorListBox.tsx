@@ -42,7 +42,7 @@ export function HueListBox(props:HueListBoxProps) {
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-1 w-(--button-width) rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
+          className="mt-1 w-[var(--button-width)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption
@@ -79,7 +79,7 @@ export function LuminosityListBox(props:LuminosityListBoxProps) {
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-1 w-(--button-width) rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
+          className="mt-1 w-[var(--button-width)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption
