@@ -7,6 +7,8 @@ import {HueListBox, LuminosityListBox} from './components/RandomColorListBox';
 import SizeRange from './components/SizeRange';
 import { getNextScreensaverPosition } from './lib/getNextScreensaverPosition';
 import { hueOptions, luminosityOptions} from './lib/type';
+import { getRandomVelocity } from './lib/getRandomVelocity';
+
 
 export default function App() {
   const [hue, setHue] = useState(hueOptions[0]!);
@@ -15,9 +17,10 @@ export default function App() {
   const [color, setColor] = useState('#ffffff');
   const [isScreensaverEnabled, setIsScreensaverEnabled] = useState(false);
   const [screensaverPosition, setScreensaverPosition] = useState({ x: 100, y: 100 });
-  const velocityRef = useRef({ dx: 5, dy: 5 });
+  const velocityRef = useRef(getRandomVelocity(5));
   const animationFrameRef = useRef<number | null>(null);
-  const [bounceCount, setBounceCount] = useState(0);
+  const [colorChangeCount, setColorChangeCount] = useState(0);
+
 
 
   const generateColor = (hueValue: typeof hueOptions[number]['value'], luminosityValue: typeof luminosityOptions[number]['value']) => {
@@ -33,6 +36,17 @@ export default function App() {
   if (!isScreensaverEnabled) return;
 
   const animate = () => {
+  // spontaneous direction change
+  if (Math.random() < 0.003) {
+    const currentSpeed = Math.sqrt(
+      velocityRef.current.dx ** 2 + velocityRef.current.dy ** 2,
+    );
+
+    velocityRef.current = getRandomVelocity(currentSpeed);
+    setColorChangeCount((count) => count + 1);
+  }
+
+  // normal movement + edge bounce    
     setScreensaverPosition((currentPosition) => {
         // 1. use currentPosition
         // 2. call getNextScreensaverPosition
@@ -49,7 +63,7 @@ export default function App() {
       );
       velocityRef.current = result.velocity;
       if (result.didBounce) {
-        setBounceCount((count) => count + 1);
+        setColorChangeCount((count) => count + 1);
       }
       return result.position;
     });
@@ -67,12 +81,12 @@ export default function App() {
   },[isScreensaverEnabled, size]);
 
   useEffect (() => {
-    if(bounceCount > 0) {
+    if(colorChangeCount > 0) {
       generateColor("random", "random");
-      console.log('bounce');
-      console.log(bounceCount);
+      console.log('color change');
+      console.log(colorChangeCount);
     }
-  }, [bounceCount]);
+  }, [colorChangeCount]);
 
 
   return (
