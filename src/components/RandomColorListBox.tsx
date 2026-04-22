@@ -16,12 +16,14 @@ type HueListBoxProps = {
   options: typeof hueOptions;
   selectedHue: typeof hueOptions[number] ;
   onChange: Dispatch<SetStateAction<HueValue>>;
+  disabled: boolean;
 };
 
 type LuminosityListBoxProps = {
   options: typeof luminosityOptions;
   selectedLuminosity: typeof luminosityOptions[number] ;
   onChange: Dispatch<SetStateAction<LuminosityValue>>;
+  disabled: boolean;
 };
 export function HueListBox(props:HueListBoxProps) {
 
@@ -30,10 +32,10 @@ export function HueListBox(props:HueListBoxProps) {
       <Label className="mb-1 block text-sm font-medium text-slate-700">
         Hue:
       </Label>
-      <Listbox value={props.selectedHue.value} onChange={props.onChange}>
+      <Listbox value={props.selectedHue.value} onChange={props.onChange} disabled={props.disabled}>
         <ListboxButton className="relative block w-full rounded-lg border border-slate-300 bg-white py-2 pr-8 pl-3 text-left 
         text-sm text-slate-900 shadow-sm focus:not-data-focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 
-        data-focus:outline-sky-500">
+        data-focus:outline-sky-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600">
           {props.selectedHue.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"
@@ -67,10 +69,10 @@ export function LuminosityListBox(props:LuminosityListBoxProps) {
       <Label className="mb-1 block text-sm font-medium text-slate-700">
         Luminosity:
       </Label>
-      <Listbox value={props.selectedLuminosity.value} onChange={props.onChange}>
+      <Listbox value={props.selectedLuminosity.value} onChange={props.onChange} disabled={props.disabled}>
         <ListboxButton className="relative block w-full rounded-lg border border-slate-300 bg-white py-2 pr-8 pl-3 text-left 
         text-sm text-slate-900 shadow-sm focus:not-data-focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 
-        data-focus:outline-sky-500">
+        data-focus:outline-sky-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600">
           {props.selectedLuminosity.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"

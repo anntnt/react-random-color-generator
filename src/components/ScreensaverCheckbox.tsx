@@ -14,7 +14,7 @@ export default function ScreensaverCheckbox({
     <Field className="flex items-center gap-2">
       <Checkbox
         checked={enabled}
-        onChange={setEnabled}
+        onChange={() => setEnabled((current) => !current)}
         className={`group block size-4 rounded border ${
           enabled ? 'bg-blue-500' : 'bg-white'
         }`}

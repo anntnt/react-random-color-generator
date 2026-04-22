@@ -6,7 +6,7 @@ type ColorDisplayProps = {
 export function ColorDisplay({ color, size }: ColorDisplayProps) {
   return (
     <div
-      className="box-border flex flex-col items-center justify-center border-[5px] border-dotted border-[#666666] text-center"
+      className="box-border flex flex-col items-center justify-center border-[5px] border-dotted border-[#666666] text-center order-1 md:order-2"
       style={{
         backgroundColor: color,
         transition: "background-color 1.5s ease",
