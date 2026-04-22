@@ -8,9 +8,7 @@ import {
 } from '@headlessui/react'
 import type { Dispatch, SetStateAction } from 'react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
-import { HueValue, luminosityOptions, LuminosityValue } from '../lib/type';
-import { hueOptions } from '../lib/type';
-
+import { HueValue, hueOptions, luminosityOptions, LuminosityValue } from '../lib/type';
 
 type HueListBoxProps = {
   options: typeof hueOptions;

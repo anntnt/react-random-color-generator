@@ -1,11 +1,12 @@
 import randomColor from 'randomcolor';
-import {useState } from 'react';
+import {useState, useEffect, useRef } from 'react';
 import './components/ColorDisplay';
 import { ColorDisplay } from './components/ColorDisplay';
 import ScreensaverCheckbox from './components/ScreensaverCheckbox';
 import {HueListBox, LuminosityListBox} from './components/RandomColorListBox';
 import SizeRange from './components/SizeRange';
-import { hueOptions, luminosityOptions } from './lib/type';
+import { getNextScreensaverPosition } from './lib/getNextScreensaverPosition';
+import { hueOptions, luminosityOptions} from './lib/type';
 
 export default function App() {
   const [hue, setHue] = useState(hueOptions[0]!);
@@ -13,15 +14,65 @@ export default function App() {
   const [size, setSize] = useState(200);
   const [color, setColor] = useState('#ffffff');
   const [isScreensaverEnabled, setIsScreensaverEnabled] = useState(false);
+  const [screensaverPosition, setScreensaverPosition] = useState({ x: 100, y: 100 });
+  const velocityRef = useRef({ dx: 5, dy: 5 });
+  const animationFrameRef = useRef<number | null>(null);
+  const [bounceCount, setBounceCount] = useState(0);
 
-  const generateColor = () => {
+
+  const generateColor = (hueValue: typeof hueOptions[number]['value'], luminosityValue: typeof luminosityOptions[number]['value']) => {
     setColor(
       randomColor({
-        hue: hue.value,
-        luminosity: luminosity.value,
+        hue: hueValue,
+        luminosity: luminosityValue,
       }),
     );
   };
+
+  useEffect(() => {
+  if (!isScreensaverEnabled) return;
+
+  const animate = () => {
+    setScreensaverPosition((currentPosition) => {
+        // 1. use currentPosition
+        // 2. call getNextScreensaverPosition
+        // 3. update velocityRef.current
+        // 4. if didBounce, update bounceCount state to trigger color change
+        // 5. return next position
+
+      const result = getNextScreensaverPosition(
+        currentPosition,
+        velocityRef.current,
+        size,
+        window.innerWidth,
+        window.innerHeight
+      );
+      velocityRef.current = result.velocity;
+      if (result.didBounce) {
+        setBounceCount((count) => count + 1);
+      }
+      return result.position;
+    });
+    animationFrameRef.current = requestAnimationFrame(animate);
+  };
+
+  animationFrameRef.current = requestAnimationFrame(animate);
+
+  return () => {
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+  };
+
+  },[isScreensaverEnabled, size]);
+
+  useEffect (() => {
+    if(bounceCount > 0) {
+      generateColor("random", "random");
+      console.log('bounce');
+      console.log(bounceCount);
+    }
+  }, [bounceCount]);
 
 
   return (
@@ -33,7 +84,7 @@ export default function App() {
       
       <div className="flex flex-col md:flex-row max-w-5xl gap-10 items-center
       overflow-hidden px-6 text-center">
-        <ColorDisplay color={color} size={size} />
+        <ColorDisplay color={color} size={size} isScreensaverEnabled={isScreensaverEnabled} screensaverPosition={screensaverPosition} />
         <div className="flex flex-col items-start space-y-6 order-2 md:order-1 w-100 md:w-80">
           <HueListBox
             options={hueOptions}
@@ -59,7 +110,7 @@ export default function App() {
             setEnabled={setIsScreensaverEnabled}
           />
           <button
-              onClick={generateColor}
+              onClick={() => generateColor(hue.value, luminosity.value)}
               disabled={isScreensaverEnabled}
               className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 py-2.5 text-[20px] text-white hover:bg-sky-700
               disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600
