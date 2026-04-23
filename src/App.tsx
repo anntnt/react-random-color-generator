@@ -37,8 +37,7 @@ export default function App() {
             Random Color Generator
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-base font-medium text-zinc-600">
-            Click the button to generate a random color, or enable screensaver
-            mode to generate colors automatically.
+            Click the button to generate a random color, adjust the box size, or use screensaver mode to generate colors automatically.
           </p>
         </div>
         <div className="flex flex-col md:flex-row max-w-5xl gap-10 items-center overflow-hidden px-6 text-center">
