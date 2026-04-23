@@ -30,7 +30,7 @@ type LuminosityListBoxProps = {
 };
 export function HueListBox(props: HueListBoxProps) {
   return (
-    <Field className="mt-3 w-56 text-left">
+    <Field className="mt-3 w-60 text-left">
       <Label className="mb-2 block text-sm font-medium font-semibold text-zinc-700">
         Hue:
       </Label>
@@ -39,7 +39,7 @@ export function HueListBox(props: HueListBoxProps) {
         onChange={props.onChange}
         disabled={props.disabled}
       >
-        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
+        <ListboxButton className="relative mt-1 flex w-60 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
           {props.selectedHue.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-zinc-500"
@@ -80,7 +80,7 @@ export function HueListBox(props: HueListBoxProps) {
 
 export function LuminosityListBox(props: LuminosityListBoxProps) {
   return (
-    <Field className="mt-3 w-56 text-left">
+    <Field className="mt-3 w-60 text-left">
       <Label className="mb-2 block text-sm font-medium font-semibold text-zinc-700">
         Luminosity:
       </Label>
@@ -89,7 +89,7 @@ export function LuminosityListBox(props: LuminosityListBoxProps) {
         onChange={props.onChange}
         disabled={props.disabled}
       >
-        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
+        <ListboxButton className="relative mt-1 flex w-60 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
           {props.selectedLuminosity.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-zinc-500"

@@ -30,8 +30,8 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-6 py-14 text-zinc-950">
-      <main className="mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-2xl bg-white px-8 py-8 shadow-2xl shadow-fuchsia-950/30 sm:py-20">
+    <div className="min-h-screen sm:bg-zinc-950 sm:px-6 md:py-10 xl:py-16 text-zinc-950">
+      <main className="mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-2xl bg-white px-8 py-8 sm:shadow-2xl sm:shadow-fuchsia-950/30 sm:py-20">
         <div className="text-center">
           <h1 className="text-3xl font-semibold tracking-tight">
             Random Color Generator
@@ -79,7 +79,7 @@ export default function App() {
             <button
               onClick={colorGenerateHandler}
               disabled={isScreensaverEnabled}
-              className="w-56 cursor-pointer rounded-lg border border-fuchsia-700 bg-fuchsia-600 px-4 mt-3 mb-1
+              className="w-60 cursor-pointer rounded-lg border border-fuchsia-700 bg-fuchsia-600 px-4 mt-3 mb-1
               py-3 text-white text-base font-semibold shadow-sm shadow-fuchsia-900/30 hover:bg-fuchsia-700 disabled:cursor-not-allowed 
               disabled:opacity-50 focus:outline-none focus:ring-2 
               focus:ring-fuchsia-400 focus:ring-offset-2"
