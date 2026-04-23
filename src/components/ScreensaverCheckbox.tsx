@@ -11,7 +11,7 @@ export default function ScreensaverCheckbox({
   setEnabled,
 }: ModeSwitchProps) {
   return (
-    <Field className="flex items-center gap-2">
+    <Field className="flex items-center gap-2 mt-3">
       <Checkbox
         checked={enabled}
         onChange={() => setEnabled((current) => !current)}

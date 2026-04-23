@@ -26,7 +26,7 @@ type LuminosityListBoxProps = {
 export function HueListBox(props:HueListBoxProps) {
 
   return (
-    <Field className="mt-6 w-56 text-left">
+    <Field className="mt-3 w-56 text-left">
       <Label className="mb-1 block text-sm font-medium text-slate-700">
         Hue:
       </Label>
@@ -63,7 +63,7 @@ export function HueListBox(props:HueListBoxProps) {
 export function LuminosityListBox(props:LuminosityListBoxProps) {
 
   return (
-    <Field className="mt-6 w-56 text-left">
+    <Field className="mt-3 w-56 text-left">
       <Label className="mb-1 block text-sm font-medium text-slate-700">
         Luminosity:
       </Label>

@@ -15,8 +15,8 @@ export function ColorDisplay({ color, size, isScreensaverEnabled, screensaverPos
 
   return (
     <div
-      className="box-border flex flex-col items-center justify-center border-[5px] border-dotted text-center 
-      order-1 md:order-2 shadow-xl shadow-slate-900/30 rounded-lg"
+      className="box-border flex flex-col items-center justify-center rounded-2xl 
+      border-2 text-center shadow-xl shadow-slate-900/20 oder-1 md:order-2"
       style={isScreensaverEnabled ? {
         position: 'fixed',
         left: screensaverPosition.x,
@@ -38,7 +38,7 @@ export function ColorDisplay({ color, size, isScreensaverEnabled, screensaverPos
       }}
     >
       <div className="font-bold">Generated Color:</div>
-      <div>{color}</div>
+      <div className="font-mono text-lg font-semibold mt-2">{color}</div>
     </div>
   );
 }
