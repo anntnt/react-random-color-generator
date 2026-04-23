@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from 'react';
 import { useScreensaver } from './hooks/useScreensaver';
 import './components/ColorDisplay';
@@ -18,7 +17,7 @@ export default function App() {
 
   const colorGenerateHandler = () => {
     setColor(getRandomColor(hue.value, luminosity.value));
-  };  
+  };
 
   const screensaverColorChangeHandler = useCallback(() => {
     setColor(getRandomColor('random', 'random'));
@@ -38,13 +37,11 @@ export default function App() {
             Random Color Generator
           </h1>
           <p className="mt-3 text-sm text-slate-500">
-            Generate a random color on clicking the button or let the screensaver
-            run
+            Generate a random color on clicking the button or let the
+            screensaver run
           </p>
         </div>
-        <div
-          className="flex flex-col md:flex-row max-w-5xl gap-10 items-center overflow-hidden px-6 text-center"
-        >
+        <div className="flex flex-col md:flex-row max-w-5xl gap-10 items-center overflow-hidden px-6 text-center">
           <ColorDisplay
             color={color}
             size={size}
@@ -78,7 +75,7 @@ export default function App() {
             <ScreensaverCheckbox
               enabled={isScreensaverEnabled}
               setEnabled={setIsScreensaverEnabled}
-            />        
+            />
             <button
               onClick={colorGenerateHandler}
               disabled={isScreensaverEnabled}
@@ -88,7 +85,7 @@ export default function App() {
               focus:ring-sky-500 focus:ring-offset-2"
             >
               Generate
-            </button>            
+            </button>
           </div>
         </div>
       </main>
