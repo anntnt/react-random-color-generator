@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useScreensaver } from './hooks/useScreensaver';
 import './components/ColorDisplay';
 import { ColorDisplay } from './components/ColorDisplay';
@@ -15,16 +15,20 @@ export default function App() {
   const [size, setSize] = useState(200);
   const [color, setColor] = useState('#ffffff');
   const [isScreensaverEnabled, setIsScreensaverEnabled] = useState(false);
-  
-  const screensaverPosition = useScreensaver({
-    enabled: isScreensaverEnabled,
-    size,
-    onColorChange: () => setColor(getRandomColor('random', 'random')),
-  });
 
   const colorGenerateHandler = () => {
     setColor(getRandomColor(hue.value, luminosity.value));
-  };
+  };  
+
+  const screensaverColorChangeHandler = useCallback(() => {
+    setColor(getRandomColor('random', 'random'));
+  }, []);
+
+  const screensaverPosition = useScreensaver({
+    enabled: isScreensaverEnabled,
+    size,
+    onColorChange: screensaverColorChangeHandler,
+  });
 
   return (
     <div className="bg-white px-6 py-8 text-slate-900 flex flex-col gap-6 justify-center items-center">
@@ -74,8 +78,13 @@ export default function App() {
             enabled={isScreensaverEnabled}
             setEnabled={setIsScreensaverEnabled}
           />
+          {isScreensaverEnabled && (
+            <p className="max-w-72 text-sm text-sky-700 text-left">
+              Manual random color generation is disabled while screensaver mode is running.
+            </p>
+          )}          
           <button
-            onClick={() => colorGenerateHandler()}
+            onClick={() => colorGenerateHandler}
             disabled={isScreensaverEnabled}
             className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 py-2.5 text-[20px] text-white hover:bg-sky-700
               disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600

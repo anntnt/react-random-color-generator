@@ -15,13 +15,15 @@ export function ColorDisplay({ color, size, isScreensaverEnabled, screensaverPos
 
   return (
     <div
-      className="box-border flex flex-col items-center justify-center border-[5px] border-dotted border-[#666666] text-center order-1 md:order-2"
+      className="box-border flex flex-col items-center justify-center border-[5px] border-dotted text-center 
+      order-1 md:order-2 shadow-xl shadow-slate-900/30 rounded-lg"
       style={isScreensaverEnabled ? {
         position: 'fixed',
         left: screensaverPosition.x,
         top: screensaverPosition.y,
         backgroundColor: color,
         color: textColor,
+        borderColor: textColor,
         transition: "background-color 0.5s ease",
         width: `${size}px`,
         height: `${size}px`,
@@ -29,6 +31,7 @@ export function ColorDisplay({ color, size, isScreensaverEnabled, screensaverPos
       } : {
         backgroundColor: color,
         color: textColor,
+        borderColor: textColor,
         transition: "background-color 0.5s ease",
         width: `${size}px`,
         height: `${size}px`,
