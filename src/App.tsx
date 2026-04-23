@@ -30,13 +30,13 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-100 px-6 py-14 text-slate-900">
-      <main className="mx-auto flex max-w-5xl flex-col justify-items items-center gap-8 rounded-2xl bg-white px-8 py-8 sm:py-20 shadow-lg">
+    <div className="min-h-screen bg-zinc-950 px-6 py-14 text-zinc-950">
+      <main className="mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-2xl bg-white px-8 py-8 shadow-2xl shadow-fuchsia-950/30 sm:py-20">
         <div className="text-center">
           <h1 className="text-3xl font-semibold tracking-tight">
             Random Color Generator
           </h1>
-          <p className="mx-auto mt-3 max-w-xl text-base font-medium text-slate-700">
+          <p className="mx-auto mt-3 max-w-xl text-base font-medium text-zinc-600">
             Click the button to generate a random color, or enable screensaver
             mode to generate colors automatically.
           </p>
@@ -48,7 +48,7 @@ export default function App() {
             isScreensaverEnabled={isScreensaverEnabled}
             screensaverPosition={screensaverPosition}
           />
-          <div className="flex flex-col items-sart w-full gap-5 order-2 md:order-1 md:w-80">
+          <div className="flex flex-col items-start w-full gap-5 order-2 md:order-1 md:w-80">
             <HueListBox
               options={hueOptions}
               selectedHue={hue}
@@ -79,10 +79,10 @@ export default function App() {
             <button
               onClick={colorGenerateHandler}
               disabled={isScreensaverEnabled}
-              className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 mt-3 mb-1
-              py-3 text-white text-base font-semibold shadow-sm hover:bg-sky-700 disabled:cursor-not-allowed 
+              className="w-56 cursor-pointer rounded-lg border border-fuchsia-700 bg-fuchsia-600 px-4 mt-3 mb-1
+              py-3 text-white text-base font-semibold shadow-sm shadow-fuchsia-900/30 hover:bg-fuchsia-700 disabled:cursor-not-allowed 
               disabled:opacity-50 focus:outline-none focus:ring-2 
-              focus:ring-sky-500 focus:ring-offset-2"
+              focus:ring-fuchsia-400 focus:ring-offset-2"
             >
               Generate
             </button>

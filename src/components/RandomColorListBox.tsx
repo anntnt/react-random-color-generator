@@ -31,7 +31,7 @@ type LuminosityListBoxProps = {
 export function HueListBox(props: HueListBoxProps) {
   return (
     <Field className="mt-3 w-56 text-left">
-      <Label className="mb-2 block text-sm font-medium font-semibold text-slate-700">
+      <Label className="mb-2 block text-sm font-medium font-semibold text-zinc-700">
         Hue:
       </Label>
       <Listbox
@@ -39,16 +39,16 @@ export function HueListBox(props: HueListBoxProps) {
         onChange={props.onChange}
         disabled={props.disabled}
       >
-        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-left text-sm font-medium text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400">
+        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
           {props.selectedHue.label}
           <ChevronDownIcon
-            className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"
+            className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-zinc-500"
             aria-hidden="true"
           />
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-2 w-[var(--button-width)] rounded-lg border border-slate-200 bg-white p-1 shadow-xl shadow-slate-900/10 focus:outline-none"
+          className="mt-2 w-[var(--button-width)] rounded-lg border border-fuchsia-100 bg-white p-1 shadow-xl shadow-fuchsia-950/10 focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption
@@ -56,7 +56,7 @@ export function HueListBox(props: HueListBoxProps) {
               value={option.value}
               className={({ focus }) =>
                 `flex cursor-default items-center gap-2 rounded-lg px-3 py-2 text-sm select-none ${
-                  focus ? 'bg-sky-600 text-white' : 'text-slate-900'
+                  focus ? 'bg-fuchsia-600 text-white' : 'text-zinc-950'
                 }`
               }
             >
@@ -65,7 +65,7 @@ export function HueListBox(props: HueListBoxProps) {
                   <CheckIcon
                     className={`size-4 ${
                       selected ? 'visible' : 'invisible'
-                    } ${focus ? 'fill-white' : 'fill-sky-600'}`}
+                    } ${focus ? 'fill-white' : 'fill-fuchsia-600'}`}
                   />
                   <span>{option.label}</span>
                 </>
@@ -81,7 +81,7 @@ export function HueListBox(props: HueListBoxProps) {
 export function LuminosityListBox(props: LuminosityListBoxProps) {
   return (
     <Field className="mt-3 w-56 text-left">
-      <Label className="mb-2 block text-sm font-medium font-semibold text-slate-700">
+      <Label className="mb-2 block text-sm font-medium font-semibold text-zinc-700">
         Luminosity:
       </Label>
       <Listbox
@@ -89,16 +89,16 @@ export function LuminosityListBox(props: LuminosityListBoxProps) {
         onChange={props.onChange}
         disabled={props.disabled}
       >
-        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-left text-sm font-medium text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400">
+        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-3 py-2 text-left text-sm font-medium text-zinc-950 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-fuchsia-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-400">
           {props.selectedLuminosity.label}
           <ChevronDownIcon
-            className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"
+            className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-zinc-500"
             aria-hidden="true"
           />
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-2 w-[var(--button-width)] rounded-lg border border-slate-200 bg-white p-1 shadow-xl shadow-slate-900/10 focus:outline-none"
+          className="mt-2 w-[var(--button-width)] rounded-lg border border-fuchsia-100 bg-white p-1 shadow-xl shadow-fuchsia-950/10 focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption
@@ -106,7 +106,7 @@ export function LuminosityListBox(props: LuminosityListBoxProps) {
               value={option.value}
               className={({ focus }) =>
                 `flex cursor-default items-center gap-2 rounded-lg px-3 py-2 text-sm select-none ${
-                  focus ? 'bg-sky-600 text-white' : 'text-slate-900'
+                  focus ? 'bg-fuchsia-600 text-white' : 'text-zinc-950'
                 }`
               }
             >
@@ -115,7 +115,7 @@ export function LuminosityListBox(props: LuminosityListBoxProps) {
                   <CheckIcon
                     className={`size-4 ${
                       selected ? 'visible' : 'invisible'
-                    } ${focus ? 'fill-white' : 'fill-sky-600'}`}
+                    } ${focus ? 'fill-white' : 'fill-fuchsia-600'}`}
                   />
                   <span>{option.label}</span>
                 </>
