@@ -27,13 +27,11 @@ export function HueListBox(props:HueListBoxProps) {
 
   return (
     <Field className="mt-3 w-56 text-left">
-      <Label className="mb-1 block text-sm font-medium text-slate-700">
+      <Label className="mb-2 block text-sm font-medium font-semibold text-slate-700">
         Hue:
       </Label>
       <Listbox value={props.selectedHue.value} onChange={props.onChange} disabled={props.disabled}>
-        <ListboxButton className="relative block w-full rounded-lg border border-slate-300 bg-white py-2 pr-8 pl-3 text-left 
-        text-sm text-slate-900 shadow-sm focus:not-data-focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 
-        data-focus:outline-sky-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600">
+        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-left text-sm font-medium text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400">
           {props.selectedHue.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"
@@ -42,7 +40,7 @@ export function HueListBox(props:HueListBoxProps) {
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-1 w-[var(--button-width)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
+          className="mt-2 w-[var(--button-width)] rounded-lg border border-slate-200 bg-white p-1 shadow-xl shadow-slate-900/10 focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption
@@ -64,13 +62,11 @@ export function LuminosityListBox(props:LuminosityListBoxProps) {
 
   return (
     <Field className="mt-3 w-56 text-left">
-      <Label className="mb-1 block text-sm font-medium text-slate-700">
+      <Label className="mb-2 block text-sm font-medium font-semibold text-slate-700">
         Luminosity:
       </Label>
       <Listbox value={props.selectedLuminosity.value} onChange={props.onChange} disabled={props.disabled}>
-        <ListboxButton className="relative block w-full rounded-lg border border-slate-300 bg-white py-2 pr-8 pl-3 text-left 
-        text-sm text-slate-900 shadow-sm focus:not-data-focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 
-        data-focus:outline-sky-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600">
+        <ListboxButton className="relative mt-1 flex w-56 items-center justify-between rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-left text-sm font-medium text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400">
           {props.selectedLuminosity.label}
           <ChevronDownIcon
             className="pointer-events-none absolute top-2.5 right-2.5 size-4 fill-slate-500"
@@ -79,7 +75,7 @@ export function LuminosityListBox(props:LuminosityListBoxProps) {
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="mt-1 w-[var(--button-width)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg focus:outline-none"
+          className="mt-2 w-[var(--button-width)] rounded-lg border border-slate-200 bg-white p-1 shadow-xl shadow-slate-900/10 focus:outline-none"
         >
           {props.options.map((option) => (
             <ListboxOption

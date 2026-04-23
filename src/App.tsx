@@ -78,22 +78,17 @@ export default function App() {
             <ScreensaverCheckbox
               enabled={isScreensaverEnabled}
               setEnabled={setIsScreensaverEnabled}
-            />
-            {isScreensaverEnabled && (
-              <p className="rounded-md border border-sky-200 bg-sky-50 px-3 py-2 text-left text-sm text-sky-800">
-                Manual random color generation is disabled while screensaver mode is running.
-              </p>
-            )}          
+            />        
             <button
               onClick={colorGenerateHandler}
               disabled={isScreensaverEnabled}
-              className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 mt-3
+              className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 mt-3 mb-1
               py-3 text-white text-base font-semibold shadow-sm hover:bg-sky-700 disabled:cursor-not-allowed 
               disabled:opacity-50 focus:outline-none focus:ring-2 
               focus:ring-sky-500 focus:ring-offset-2"
             >
               Generate
-            </button>
+            </button>            
           </div>
         </div>
       </main>
