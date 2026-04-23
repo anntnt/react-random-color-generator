@@ -1,5 +1,5 @@
-import randomColor from 'randomcolor';
-import { useState, useCallback } from 'react';
+
+import { useState } from 'react';
 import { useScreensaver } from './hooks/useScreensaver';
 import './components/ColorDisplay';
 import { ColorDisplay } from './components/ColorDisplay';
@@ -7,6 +7,7 @@ import ScreensaverCheckbox from './components/ScreensaverCheckbox';
 import { HueListBox, LuminosityListBox } from './components/RandomColorListBox';
 import SizeRange from './components/SizeRange';
 import { hueOptions, luminosityOptions } from './lib/type';
+import { getRandomColor } from './lib/getRandomColor';
 
 export default function App() {
   const [hue, setHue] = useState(hueOptions[0]!);
@@ -14,27 +15,17 @@ export default function App() {
   const [size, setSize] = useState(200);
   const [color, setColor] = useState('#ffffff');
   const [isScreensaverEnabled, setIsScreensaverEnabled] = useState(false);
-
-  const generateColor = useCallback(
-    (
-      hueValue: (typeof hueOptions)[number]['value'],
-      luminosityValue: (typeof luminosityOptions)[number]['value'],
-    ) => {
-      setColor(
-        randomColor({
-          hue: hueValue,
-          luminosity: luminosityValue,
-        }),
-      );
-    },
-    [],
-  );
   
   const screensaverPosition = useScreensaver({
     enabled: isScreensaverEnabled,
     size,
-    onColorChange: () => generateColor('random', 'random'),
+    onColorChange: () => setColor(getRandomColor('random', 'random')),
   });
+
+  const colorGenerateHandler = () => {
+    setColor(getRandomColor(hue.value, luminosity.value));
+  };
+
   return (
     <div className="bg-white px-6 py-8 text-slate-900 flex flex-col gap-6 justify-center items-center">
       <h1 className="m-0 text-[30px] font-semibold text-center">
@@ -84,7 +75,7 @@ export default function App() {
             setEnabled={setIsScreensaverEnabled}
           />
           <button
-            onClick={() => generateColor(hue.value, luminosity.value)}
+            onClick={() => colorGenerateHandler()}
             disabled={isScreensaverEnabled}
             className="w-56 cursor-pointer rounded-lg border border-slate-600 bg-sky-600 px-4 py-2.5 text-[20px] text-white hover:bg-sky-700
               disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-sky-600

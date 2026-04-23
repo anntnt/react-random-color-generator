@@ -24,7 +24,7 @@ export function useScreensaver({
     if (!enabled) return;
 
     const animate = () => {
-      if (Math.random() < 0.003) {
+      if (Math.random() < 0.01) {
         const currentSpeed = Math.sqrt(
           velocityRef.current.dx ** 2 + velocityRef.current.dy ** 2,
         );
