@@ -2,6 +2,8 @@
 
 Design and develop a random color generator web application using React. Users can generate colors manually with the `Generate` button, customize the color options and box size, or enable screensaver mode to move the color box around the screen while colors change automatically:
 
+![Random Color Generator screenshot](public/screen.png)
+
 - [x] A button with the exact text `Generate` will cause a new color to be generated when it is clicked
 - [x] Once a color is generated, update the background color of a div which contains the exact text `Generated Color: <background color hex code>` (the background color and the hex code must match)
 - [x] Allow users to specify the hue, such as red, green, blue, or random
